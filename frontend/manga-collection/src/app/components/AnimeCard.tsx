@@ -1,4 +1,4 @@
-interface MangaCardProps {
+interface AnimeCardProps {
   title: string;
   imageUrl: string;
   score: number;
@@ -6,13 +6,13 @@ interface MangaCardProps {
   rank?: number;
 }
 
-export default function MangaCard({
+export default function AnimeCard({
   title,
   imageUrl,
   score,
   popularityRank,
   rank,
-}: MangaCardProps) {
+}: AnimeCardProps) {
   return (
     <div className="bg-[#1c1c1c] text-white rounded-lg p-2 w-[180px] flex-shrink-0">
       <img
