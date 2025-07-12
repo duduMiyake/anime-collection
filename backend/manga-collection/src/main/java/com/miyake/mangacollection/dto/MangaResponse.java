@@ -13,6 +13,7 @@ public class MangaResponse {
     private String titleJapanese;
     private String synopsis;
     private String imageUrl;
+    private String largeImageUrl;
     private Integer chapters;
     private Integer volumes;
     private String status;
@@ -29,6 +30,7 @@ public class MangaResponse {
         this.titleJapanese = dto.getTitleJapanese();
         this.synopsis = dto.getSynopsis();
         this.imageUrl = dto.getImages().get("jpg").get("image_url");
+        this.largeImageUrl = dto.getImages().get("jpg").get("large_image_url");
         this.chapters = dto.getChapters();
         this.volumes = dto.getVolumes();
         this.status = dto.getStatus();

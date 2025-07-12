@@ -18,12 +18,12 @@ export async function getSeasonalAnime() {
 
 export async function getAnimeById(id: string) {
     const res = await fetch(`http://localhost:8080/api/animes/id/${id}`);
-    if (!res.ok) throw new Error("Erro ao buscar manga");
+    if (!res.ok) throw new Error("Erro ao buscar anime");
     return res.json();
 }
 
 export async function getAnimeByName(name: string) {
-    const res = await fetch(`http://localhost:8080/api/animes/name/${name}`);
-    if (!res.ok) throw new Error("Erro ao buscar manga");
+    const res = await fetch(`http://localhost:8080/api/animes/title/first/${name}`);
+    if (!res.ok) throw new Error("Erro ao buscar anime");
     return res.json();
 }

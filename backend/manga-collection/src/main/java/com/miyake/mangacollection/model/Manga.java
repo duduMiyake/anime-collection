@@ -17,6 +17,7 @@ public class Manga {
     private String titleJapanese;
     private String synopsis;
     private String imageUrl;
+    private String largeImageUrl;
     private Integer chapters;
     private Integer volumes;
     private String status;

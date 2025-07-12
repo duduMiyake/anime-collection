@@ -1,34 +1,46 @@
+import Image from "next/image";
+import Link from "next/link";
+
 interface AnimeCardProps {
   title: string;
   imageUrl: string;
   score: number;
-  popularityRank?: number;
   rank?: number;
+  popularityRank?: number;
+  linkToDetails?: boolean;
 }
 
 export default function AnimeCard({
   title,
   imageUrl,
   score,
-  popularityRank,
   rank,
+  popularityRank,
+  linkToDetails = true,
 }: AnimeCardProps) {
-  return (
-    <div className="bg-[#1c1c1c] text-white rounded-lg p-2 w-[180px] flex-shrink-0">
-      <img
+  const CardContent = (
+    <div className="min-w-[160px] bg-gray-800 rounded-xl p-2 shadow-md hover:scale-105 transition-transform">
+      <Image
         src={imageUrl}
         alt={title}
-        className="rounded-lg h-[270px] w-full object-cover"
+        width={160}
+        height={230}
+        className="rounded-md"
       />
-      <div className="mt-2">
-        <div className="text-yellow-400 text-sm">⭐ {score}</div>
-        <div className="text-sm font-semibold">
-          {popularityRank || rank}. {title}
-        </div>
-        <button className="bg-blue-600 text-sm px-3 py-1 mt-2 rounded w-full">
-          + Lista
-        </button>
-      </div>
+      <h3 className="text-sm font-bold mt-2 line-clamp-2">{title}</h3>
+      <p className="text-xs text-gray-400">Score: {score}</p>
+      {rank && <p className="text-xs text-yellow-400">Rank: #{rank}</p>}
+      {popularityRank && (
+        <p className="text-xs text-green-400">
+          Popularidade: #{popularityRank}
+        </p>
+      )}
     </div>
+  );
+
+  return linkToDetails ? (
+    <Link href={`/animes/${title}`}>{CardContent}</Link>
+  ) : (
+    CardContent
   );
 }
