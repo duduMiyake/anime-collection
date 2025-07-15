@@ -12,21 +12,23 @@ import java.util.*;
 @Builder
 public class Manga {
     private Long malId;
+    private Integer episodes;
     private String title;
     private String titleEnglish;
     private String titleJapanese;
     private String synopsis;
     private String imageUrl;
     private String largeImageUrl;
-    private Integer chapters;
-    private Integer volumes;
     private String status;
     private LocalDate publishedFrom;
     private LocalDate publishedTo;
     private List<String> genres;
     private Double score;
     private Integer scoredBy;
+    private String source;
+    private String studios;
     private Integer rank;
+    private String rating;
     private Integer popularity;
     private LocalDateTime lastFetched;
 }

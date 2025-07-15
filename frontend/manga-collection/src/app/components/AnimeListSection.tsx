@@ -13,7 +13,6 @@ export default function AnimeListSection({
   title,
   animes,
   loading,
-  variant,
 }: AnimeListSectionProps) {
   return (
     <section className="mt-10">
@@ -24,8 +23,8 @@ export default function AnimeListSection({
       {loading ? (
         <p className="text-white">Carregando...</p>
       ) : (
-        <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-          {animes.map((manga, index) => {
+        <div className="flex gap-4 overflow-visible pb-4 scrollbar-hide">
+          {animes.slice(0, 6).map((manga, index) => {
             if (!manga.imageUrl) return null;
 
             return (
@@ -33,11 +32,6 @@ export default function AnimeListSection({
                 key={index}
                 title={manga.title}
                 imageUrl={manga.imageUrl}
-                score={manga.score}
-                rank={variant === "score" ? manga.rank : undefined}
-                popularityRank={
-                  variant === "popularity" ? manga.popularity : undefined
-                }
               />
             );
           })}

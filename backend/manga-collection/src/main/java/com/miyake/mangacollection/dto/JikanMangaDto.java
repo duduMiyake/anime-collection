@@ -9,6 +9,7 @@ import java.util.Map;
 @Data
 public class JikanMangaDto {
     private Long malId;
+    private Integer episodes;
     private String title;
 
     @JsonProperty("title_english")
@@ -30,12 +31,29 @@ public class JikanMangaDto {
     @JsonProperty("scored_by")
     private Integer scoredBy;
 
+    private String source;
+
+    @JsonProperty("studios")
+    private List<Studio> studios;
+
     private Integer rank;
+    private String rating;
     private Integer popularity;
     private List<Genre> genres;
 
+    @JsonProperty("themes")
+    private List<Genre> themes;
+
+    @JsonProperty("demographics")
+    private List<Genre> demographics;
+
     @Data
     public static class Genre {
+        private String name;
+    }
+
+    @Data
+    public static class Studio {
         private String name;
     }
 }
