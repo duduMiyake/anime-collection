@@ -10,8 +10,8 @@ export default function AnimeClientSection({ anime }: { anime: Anime }) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
   return (
-    <section className="flex flex-row justify-between max-w-5xl mx-auto border">
-      <div className="max-w-3/4 border">
+    <section className="flex flex-row justify-between max-w-5xl mx-auto">
+      <div className="max-w-3/4 pr-10">
         <ul className="flex flex-row gap-4">
           {anime.genres.map((genre: string) => (
             <li
@@ -85,7 +85,7 @@ export default function AnimeClientSection({ anime }: { anime: Anime }) {
       </div>
 
       {/*Right side*/}
-      <div className="flex flex-col w-fit font-semibold border">
+      <div className="flex flex-col w-fit font-semibold">
         <div className="flex border-b-1 py-4 items-center">
           <h1 className="mr-4 text-lg text-[#FFD6BA]">Studios: </h1>
           <p>{anime.studios.join(", ")}</p>

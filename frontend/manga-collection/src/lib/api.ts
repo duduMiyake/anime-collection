@@ -1,6 +1,6 @@
-export async function getTopAnime() {
-    const res = await fetch("http://localhost:8080/api/animes/top");
-    if (!res.ok) throw new Error("Erro ao buscar mangás");
+export async function getTopAnime(page: number = 1, limit: number = 25) {
+    const res = await fetch(`http://localhost:8080/api/animes/top?page=${page}&limit=${limit}`);
+    if (!res.ok) throw new Error("Erro ao buscar animes");
     return res.json();
 }
 

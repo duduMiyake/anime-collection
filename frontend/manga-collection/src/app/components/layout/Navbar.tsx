@@ -14,7 +14,9 @@ export default function Navbar() {
           <li className="hover:text-gray-300 cursor-pointer">
             <Link href="/">Home</Link>
           </li>
-          <li className="hover:text-gray-300 cursor-pointer">Animes</li>
+          <li className="hover:text-gray-300 cursor-pointer">
+            <Link href={"/animes/list"}>Animes</Link>
+          </li>
           <li className="hover:text-gray-300 cursor-pointer">About</li>
         </ul>
       </div>
