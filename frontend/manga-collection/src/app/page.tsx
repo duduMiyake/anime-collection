@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getSeasonalAnime } from "@/lib/api";
+import { getSeasonalAnime, getTopAnime, getPopularAnime } from "@/lib/api";
 import AnimeListSection from "@/app/components/AnimeListSection";
 import { Anime } from "@/app/types";
 import FeaturedAnimeSection from "./components/animes/FeaturedAnimeSection";
@@ -16,15 +16,23 @@ function removeDuplicates(animes: Anime[]): Anime[] {
 }
 
 export default function HomePage() {
-  const [seasonalMangas, setSeasonalMangas] = useState<Anime[]>([]);
+  const [seasonalAnimes, setSeasonalAnimes] = useState<Anime[]>([]);
+  const [topAnimes, setTopAnimes] = useState<Anime[]>([]);
+  const [popularAnimes, setPopularAnimes] = useState<Anime[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAllData = async () => {
       setLoading(true);
       try {
-        const [seasonal] = await Promise.all([getSeasonalAnime()]);
-        setSeasonalMangas(removeDuplicates(seasonal));
+        const [seasonal, top, popular] = await Promise.all([
+          getSeasonalAnime(),
+          getTopAnime(),
+          getPopularAnime(),
+        ]);
+        setSeasonalAnimes(removeDuplicates(seasonal));
+        setTopAnimes(removeDuplicates(top));
+        setPopularAnimes(removeDuplicates(popular));
       } catch (error) {
         console.error("Erro ao buscar os dados:", error);
       } finally {
@@ -37,10 +45,10 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen text-white">
-      {seasonalMangas.length > 0 && (
+      {seasonalAnimes.length > 0 && (
         <FeaturedAnimeSection
           anime={
-            seasonalMangas[Math.floor(Math.random() * seasonalMangas.length)]
+            seasonalAnimes[Math.floor(Math.random() * seasonalAnimes.length)]
           }
           linkToDetails={true}
         />
@@ -48,8 +56,20 @@ export default function HomePage() {
 
       <div className="max-w-5xl mx-auto">
         <AnimeListSection
-          title="Top 10 mangas esta semana"
-          animes={seasonalMangas}
+          title="Popular this season"
+          animes={seasonalAnimes}
+          loading={loading}
+        />
+
+        <AnimeListSection
+          title="Best rated"
+          animes={topAnimes}
+          loading={loading}
+        />
+
+        <AnimeListSection
+          title="Most popular"
+          animes={popularAnimes}
           loading={loading}
         />
       </div>

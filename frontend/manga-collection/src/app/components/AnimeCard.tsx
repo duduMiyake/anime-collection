@@ -2,12 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface AnimeCardProps {
+  id: number;
   title: string;
   imageUrl: string;
   linkToDetails?: boolean;
 }
 
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]/g, "");
+}
+
 export default function AnimeCard({
+  id,
   title,
   imageUrl,
   linkToDetails = true,
@@ -25,7 +34,7 @@ export default function AnimeCard({
   );
 
   return linkToDetails ? (
-    <Link href={`/animes/${title}`}>{CardContent}</Link>
+    <Link href={`/animes/${id}/${slugify(title)}`}>{CardContent}</Link>
   ) : (
     CardContent
   );

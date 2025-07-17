@@ -11,7 +11,7 @@ import java.util.*;
 @AllArgsConstructor
 @Builder
 public class Manga {
-    private Long malId;
+    private Integer malId;
     private Integer episodes;
     private String title;
     private String titleEnglish;
@@ -19,6 +19,7 @@ public class Manga {
     private String synopsis;
     private String imageUrl;
     private String largeImageUrl;
+    private String trailer;
     private String status;
     private LocalDate publishedFrom;
     private LocalDate publishedTo;
@@ -31,4 +32,5 @@ public class Manga {
     private String rating;
     private Integer popularity;
     private LocalDateTime lastFetched;
+
 }

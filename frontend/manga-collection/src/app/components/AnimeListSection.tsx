@@ -1,6 +1,7 @@
 // components/AnimeListSection.tsx
 import AnimeCard from "@/app/components/AnimeCard";
 import { Anime } from "@/app/types";
+import Link from "next/link";
 
 interface AnimeListSectionProps {
   title: string;
@@ -16,22 +17,26 @@ export default function AnimeListSection({
 }: AnimeListSectionProps) {
   return (
     <section className="mt-10">
-      <h2 className="text-white text-xl font-bold mb-4 border-l-4 border-yellow-500 pl-2">
-        {title}
-      </h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-white text-xl font-bold mb-4 border-l-4 border-[#FFD6BA] pl-2">
+          {title}
+        </h2>
+        <Link href={"/"}>Ver todos</Link>
+      </div>
 
       {loading ? (
         <p className="text-white">Carregando...</p>
       ) : (
         <div className="flex gap-4 overflow-visible pb-4 scrollbar-hide">
-          {animes.slice(0, 6).map((manga, index) => {
-            if (!manga.imageUrl) return null;
+          {animes.slice(0, 6).map((anime, index) => {
+            if (!anime.imageUrl) return null;
 
             return (
               <AnimeCard
                 key={index}
-                title={manga.title}
-                imageUrl={manga.imageUrl}
+                id={anime.id}
+                title={anime.title}
+                imageUrl={anime.imageUrl}
               />
             );
           })}

@@ -8,6 +8,7 @@ import java.util.Map;
 
 @Data
 public class JikanMangaDto {
+    @JsonProperty("mal_id")
     private Long malId;
     private Integer episodes;
     private String title;
@@ -22,6 +23,9 @@ public class JikanMangaDto {
 
     @JsonProperty("images")
     private Map<String, Map<String, String>> images;
+
+    @JsonProperty("trailer")
+    private Trailer trailer;
 
     private Integer chapters;
     private Integer volumes;
@@ -55,5 +59,19 @@ public class JikanMangaDto {
     @Data
     public static class Studio {
         private String name;
+    }
+
+    @Data
+    public static class Trailer {
+        @JsonProperty("youtube_id")
+        private String youtubeId;
+
+        private String url;
+
+        @JsonProperty("embed_url")
+        private String embedUrl;
+
+        @JsonProperty("images")
+        private Map<String, String> images;
     }
 }
