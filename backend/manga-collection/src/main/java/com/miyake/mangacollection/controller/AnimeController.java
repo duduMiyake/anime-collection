@@ -3,9 +3,7 @@ package com.miyake.mangacollection.controller;
 import com.miyake.mangacollection.dto.MangaResponse;
 import com.miyake.mangacollection.service.JikanAnimeService;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -19,8 +17,13 @@ public class AnimeController {
     }
 
     @GetMapping("/top")
-    public List<MangaResponse> getTopAnimes() {
-        return jikanService.getTopAnimes();
+    public List<MangaResponse> getTopAnimes(@RequestParam(defaultValue = "1") int page) {
+        return jikanService.getTopAnimes(page);
+    }
+
+    @GetMapping("/top/all")
+    public List<MangaResponse> getAllTopAnimes() {
+        return jikanService.getAllTopAnimes();
     }
 
     @GetMapping("/popular")

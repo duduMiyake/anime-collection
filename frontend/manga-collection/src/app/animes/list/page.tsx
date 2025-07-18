@@ -78,9 +78,9 @@ export default function AnimeListPage() {
     <section className="max-w-5xl mx-auto py-8 px-4">
       <h1 className="text-3xl font-bold mb-6 text-white">Top Animes</h1>
 
-      <div className="flex flex-col gap-6">
-        {visibleAnimes.map((anime) => (
-          <AnimeCardList key={anime.id} anime={anime} />
+      <div className="flex flex-col gap-4">
+        {visibleAnimes.map((anime, index) => (
+          <AnimeCardList key={anime.id} number={index + 1} anime={anime} />
         ))}
       </div>
 

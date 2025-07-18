@@ -68,7 +68,7 @@ export default function HomePage() {
         />
 
         <AnimeListSection
-          title="Most popular"
+          title="All time popular"
           animes={popularAnimes}
           loading={loading}
         />

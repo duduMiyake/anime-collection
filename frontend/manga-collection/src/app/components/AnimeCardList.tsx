@@ -1,13 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-
-interface Anime {
-  id: number;
-  title: string;
-  largeImageUrl: string;
-}
+import type { Anime } from "@/app/types";
 
 interface AnimeCardListProps {
+  number: number;
   anime: Anime;
   linkToDetails?: boolean;
 }
@@ -21,11 +17,12 @@ function slugify(text: string) {
 }
 
 export default function AnimeCardList({
+  number,
   anime,
   linkToDetails = true,
 }: AnimeCardListProps) {
   const content = (
-    <div className="flex items-center bg-[#2a2a2a] rounded-lg overflow-hidden shadow hover:scale-[1.01] transition-transform">
+    <div className="flex items-center bg-[#89B0AE] rounded-md overflow-hidden hover:scale-[1.01] transition-transform relative">
       <div className="relative w-24 h-36 flex-shrink-0">
         <Image
           src={anime.largeImageUrl}
@@ -35,7 +32,37 @@ export default function AnimeCardList({
         />
       </div>
       <div className="px-4 py-2 text-white">
-        <h2 className="text-lg font-semibold">{anime.title}</h2>
+        <p className="font-semibold text-sm">#{number}</p>
+        <h2 className="text-lg font-semibold mb-2">{anime.title}</h2>
+        <ul className="flex flex-row">
+          {anime.genres.map((genre: string) => (
+            <li
+              key={genre}
+              className="text-sm px-4 py-1 border-2 font-semibold border-[#FFD6BA] rounded-full cursor-pointer scale-90"
+            >
+              {genre}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="px-4 py-2 text-white">
+        <div className="absolute bottom-2 right-2 text-white px-3 py-1 rounded-md">
+          <div className="flex items-end gap-8">
+            <div className="flex flex-col items-end">
+              <p className="text-sm opacity-70">{anime.episodes} episodes</p>
+            </div>
+
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center justify-center">
+                <p className="text-xl font-semibold mr-1">{anime.score}</p>
+                <p className="text-sm md:text-xl text-gray-200">⭐</p>
+              </div>
+              <p className="text-sm opacity-70 text-center">
+                {anime.scoredBy / 1000} reviews
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

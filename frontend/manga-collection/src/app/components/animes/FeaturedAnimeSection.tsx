@@ -29,19 +29,19 @@ export default function FeaturedAnimeSection({
           {linkToDetails ? (
             <Link
               href={`/animes/${anime.id}/${slugify(anime.title)}`}
-              className="block w-fit h-full overflow-visible relative"
+              className="w-full h-full overflow-visible relative transition-transform duration-300 hover:scale-110 hover:brightness-80"
             >
               <Image
                 src={anime.largeImageUrl}
                 alt={anime.title}
-                className="w-full h-full object-contain transition-transform duration-300 hover:scale-110 hover:brightness-80"
+                className="w-full h-full object-contain"
                 width={500}
                 height={400}
                 priority
               />
             </Link>
           ) : (
-            <div className="w-full h-full overflow-hidden relative">
+            <div className="w-full h-full overflow-visible relative">
               <Image
                 src={anime.largeImageUrl}
                 alt={anime.title}

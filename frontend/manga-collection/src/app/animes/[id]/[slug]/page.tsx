@@ -20,8 +20,6 @@ export default async function AnimeDetailPage({ params }: Props) {
     .replace(/[^\w-]/g, "");
 
   if (slug !== expectedSlug) {
-    // Pode redirecionar para a URL correta, por exemplo
-    // ou ignorar, só mostrar mesmo
   }
 
   return (

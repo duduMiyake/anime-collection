@@ -16,7 +16,7 @@ export default function AnimeClientSection({ anime }: { anime: Anime }) {
           {anime.genres.map((genre: string) => (
             <li
               key={genre}
-              className="px-4 py-1 border border-white rounded-full cursor-pointer"
+              className="px-4 py-1 border-2 font-semibold border-[#FFD6BA] rounded-full cursor-pointer"
             >
               {genre}
             </li>
