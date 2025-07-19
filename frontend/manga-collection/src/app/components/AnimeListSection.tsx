@@ -2,6 +2,7 @@
 import AnimeCard from "@/app/components/AnimeCard";
 import { Anime } from "@/app/types";
 import Link from "next/link";
+import SkeletonAnimeListSection from "./fallback/SkeletonAnimeListSection";
 
 interface AnimeListSectionProps {
   title: string;
@@ -25,7 +26,7 @@ export default function AnimeListSection({
       </div>
 
       {loading ? (
-        <p className="text-white">Carregando...</p>
+        <SkeletonAnimeListSection />
       ) : (
         <div className="flex gap-4 overflow-visible pb-4 scrollbar-hide">
           {animes.slice(0, 6).map((anime, index) => {

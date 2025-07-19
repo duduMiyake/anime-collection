@@ -5,6 +5,7 @@ import { getSeasonalAnime, getTopAnime, getPopularAnime } from "@/lib/api";
 import AnimeListSection from "@/app/components/AnimeListSection";
 import { Anime } from "@/app/types";
 import FeaturedAnimeSection from "./components/animes/FeaturedAnimeSection";
+import SkeletonFeaturedAnimeSection from "./components/fallback/SkeletonFeaturedAnimeSection";
 
 function removeDuplicates(animes: Anime[]): Anime[] {
   const seen = new Set<string>();
@@ -45,13 +46,17 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen text-white">
-      {seasonalAnimes.length > 0 && (
-        <FeaturedAnimeSection
-          anime={
-            seasonalAnimes[Math.floor(Math.random() * seasonalAnimes.length)]
-          }
-          linkToDetails={true}
-        />
+      {loading ? (
+        <SkeletonFeaturedAnimeSection />
+      ) : (
+        seasonalAnimes.length > 0 && (
+          <FeaturedAnimeSection
+            anime={
+              seasonalAnimes[Math.floor(Math.random() * seasonalAnimes.length)]
+            }
+            linkToDetails={true}
+          />
+        )
       )}
 
       <div className="max-w-5xl mx-auto">

@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@tailwindcss/preflight;
-@tailwind utilities;
 
 :root {
   --background: linear-gradient(to bottom, #7a9b9a, #89B0AE);
