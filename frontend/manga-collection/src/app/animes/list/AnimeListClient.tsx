@@ -54,7 +54,6 @@ export default function AnimeListClient() {
       }
 
       const polishedData = removeDuplicates(data);
-      console.log(polishedData);
 
       if (data.length === 0) {
         setHasMore(false);

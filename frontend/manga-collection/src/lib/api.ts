@@ -1,7 +1,6 @@
 const BACK_API_URL = process.env.NEXT_PUBLIC_BACK_API_URL;
 
 export async function getTopAnime(page: number = 1, limit: number = 25) {
-    console.log(BACK_API_URL)
     const res = await fetch(`${BACK_API_URL}/api/animes/top?page=${page}&limit=${limit}`);
     if (!res.ok) throw new Error("Erro ao buscar animes");
     return res.json();
