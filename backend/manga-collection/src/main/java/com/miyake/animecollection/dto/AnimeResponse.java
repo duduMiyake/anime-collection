@@ -1,4 +1,4 @@
-package com.miyake.mangacollection.dto;
+package com.miyake.animecollection.dto;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
-public class MangaResponse {
+public class AnimeResponse {
         private Long id;
         private Integer episodes;
         private String title;
@@ -29,7 +29,7 @@ public class MangaResponse {
         private List<String> themes;
         private List<String> demographics;
 
-        public MangaResponse(JikanMangaDto dto) {
+        public AnimeResponse(JikananimeDto dto) {
                 this.id = dto.getMalId();
                 this.episodes = dto.getEpisodes();
                 this.title = dto.getTitle();

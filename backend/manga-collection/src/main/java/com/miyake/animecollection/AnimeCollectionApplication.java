@@ -1,13 +1,13 @@
-package com.miyake.mangacollection;
+package com.miyake.animecollection;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MangaCollectionApplication {
+public class AnimeCollectionApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MangaCollectionApplication.class, args);
+		SpringApplication.run(AnimeCollectionApplication.class, args);
 	}
 
 }

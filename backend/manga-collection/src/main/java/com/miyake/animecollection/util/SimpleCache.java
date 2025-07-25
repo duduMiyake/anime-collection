@@ -1,4 +1,4 @@
-package com.miyake.mangacollection.util;
+package com.miyake.animecollection.util;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

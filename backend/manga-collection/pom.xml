@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.miyake</groupId>
-	<artifactId>manga-collection</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>mangaCollection</name>
-	<description>Manga collection app</description>
+	<artifactId>anime-collection</artifactId>
+	<version>1.0.0</version>
+	<name>anime-collection</name>
+	<description>anime collection app</description>
 	<url/>
 	<licenses>
 		<license/>

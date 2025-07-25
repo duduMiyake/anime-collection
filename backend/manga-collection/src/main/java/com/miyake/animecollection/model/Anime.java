@@ -1,4 +1,4 @@
-package com.miyake.mangacollection.model;
+package com.miyake.animecollection.model;
 
 import lombok.*;
 
@@ -10,7 +10,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Manga {
+public class Anime {
     private Integer malId;
     private Integer episodes;
     private String title;

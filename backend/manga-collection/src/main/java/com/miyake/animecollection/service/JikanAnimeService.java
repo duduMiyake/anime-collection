@@ -1,8 +1,8 @@
-package com.miyake.mangacollection.service;
+package com.miyake.animecollection.service;
 
-import com.miyake.mangacollection.dto.JikanMangaDto;
-import com.miyake.mangacollection.dto.MangaResponse;
-import com.miyake.mangacollection.util.SimpleCache;
+import com.miyake.animecollection.dto.JikananimeDto;
+import com.miyake.animecollection.dto.AnimeResponse;
+import com.miyake.animecollection.util.SimpleCache;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -20,17 +20,17 @@ public class JikanAnimeService {
     private static final String JIKAN_API = "https://api.jikan.moe/v4";
 
     // Caches com TTL de 60 segundos (1 minuto)
-    private final SimpleCache<List<MangaResponse>> cachePopular = new SimpleCache<>(60 * 1000);
-    private final SimpleCache<List<MangaResponse>> cacheTop = new SimpleCache<>(60 * 1000);
-    private final SimpleCache<List<MangaResponse>> cacheSeasonal = new SimpleCache<>(60 * 1000);
-    private final SimpleCache<MangaResponse> cacheById = new SimpleCache<>(5 * 60 * 1000); // 5 min
-    private final SimpleCache<MangaResponse> cacheByTitle = new SimpleCache<>(5 * 60 * 1000);
+    private final SimpleCache<List<AnimeResponse>> cachePopular = new SimpleCache<>(60 * 1000);
+    private final SimpleCache<List<AnimeResponse>> cacheTop = new SimpleCache<>(60 * 1000);
+    private final SimpleCache<List<AnimeResponse>> cacheSeasonal = new SimpleCache<>(60 * 1000);
+    private final SimpleCache<AnimeResponse> cacheById = new SimpleCache<>(5 * 60 * 1000); // 5 min
+    private final SimpleCache<AnimeResponse> cacheByTitle = new SimpleCache<>(5 * 60 * 1000);
 
     public JikanAnimeService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public List<MangaResponse> getPopularAnimes(int page) {
+    public List<AnimeResponse> getPopularAnimes(int page) {
         String key = "popular_" + page;
         var cached = cachePopular.get(key);
         if (cached != null)
@@ -40,14 +40,14 @@ public class JikanAnimeService {
         var response = restTemplate.getForObject(url, JikanResponse.class);
 
         var list = Arrays.stream(response.getData())
-                .map(MangaResponse::new)
+                .map(AnimeResponse::new)
                 .collect(Collectors.toList());
 
         cachePopular.put(key, list);
         return list;
     }
 
-    public List<MangaResponse> getTopAnimes(int page) {
+    public List<AnimeResponse> getTopAnimes(int page) {
         String key = "top_" + page;
         var cached = cacheTop.get(key);
         if (cached != null)
@@ -56,21 +56,21 @@ public class JikanAnimeService {
         String url = JIKAN_API + "/top/anime?page=" + page + "&sfw=true";
         var response = restTemplate.getForObject(url, JikanResponse.class);
         var list = Arrays.stream(response.getData())
-                .map(MangaResponse::new)
+                .map(AnimeResponse::new)
                 .collect(Collectors.toList());
 
         cacheTop.put(key, list);
         return list;
     }
 
-    public List<MangaResponse> getAllTopAnimes() {
-        List<MangaResponse> allAnimes = new ArrayList<>();
+    public List<AnimeResponse> getAllTopAnimes() {
+        List<AnimeResponse> allAnimes = new ArrayList<>();
         int page = 1;
         boolean hasMore = true;
 
         while (hasMore) {
             try {
-                List<MangaResponse> pageAnimes = getTopAnimes(page);
+                List<AnimeResponse> pageAnimes = getTopAnimes(page);
                 if (pageAnimes.isEmpty()) {
                     hasMore = false;
                 } else {
@@ -85,7 +85,7 @@ public class JikanAnimeService {
         return allAnimes;
     }
 
-    public List<MangaResponse> getSeasonalAnimes(int page) {
+    public List<AnimeResponse> getSeasonalAnimes(int page) {
         String key = "seasonal_" + page;
         var cached = cacheSeasonal.get(key);
         if (cached != null)
@@ -99,7 +99,7 @@ public class JikanAnimeService {
         var response = restTemplate.getForObject(url, JikanResponse.class);
 
         var list = Arrays.stream(response.getData())
-                .map(MangaResponse::new)
+                .map(AnimeResponse::new)
                 .collect(Collectors.toList());
 
         cacheSeasonal.put(key, list);
@@ -117,7 +117,7 @@ public class JikanAnimeService {
         return "Fall";
     }
 
-    public MangaResponse getAnimeById(Long id) {
+    public AnimeResponse getAnimeById(Long id) {
         String key = "id_" + id;
         var cached = cacheById.get(key);
         if (cached != null)
@@ -125,13 +125,13 @@ public class JikanAnimeService {
 
         String url = JIKAN_API + "/anime/" + id;
         var response = restTemplate.getForObject(url, JikanSingleResponse.class);
-        var anime = new MangaResponse(response.getData());
+        var anime = new AnimeResponse(response.getData());
 
         cacheById.put(key, anime);
         return anime;
     }
 
-    public List<MangaResponse> searchAnimeByTitle(String title) {
+    public List<AnimeResponse> searchAnimeByTitle(String title) {
         String encodedTitle = URLEncoder.encode(title, StandardCharsets.UTF_8);
         String url = JIKAN_API + "/anime?q=" + encodedTitle;
         var response = restTemplate.getForObject(url, JikanResponse.class);
@@ -141,25 +141,25 @@ public class JikanAnimeService {
         }
 
         return Arrays.stream(response.getData())
-                .map(MangaResponse::new)
+                .map(AnimeResponse::new)
                 .collect(Collectors.toList());
     }
 
-    public MangaResponse getAnimeByTitle(String title) {
+    public AnimeResponse getAnimeByTitle(String title) {
         String key = "title_" + title.toLowerCase();
         var cached = cacheByTitle.get(key);
         if (cached != null)
             return cached;
 
         try {
-            List<MangaResponse> results = searchAnimeByTitle(title);
+            List<AnimeResponse> results = searchAnimeByTitle(title);
 
             if (results.isEmpty()) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Nenhum anime encontrado com o título: " + title);
             }
 
-            MangaResponse result = results.stream()
+            AnimeResponse result = results.stream()
                     .filter(anime -> anime.getTitle().equalsIgnoreCase(title))
                     .findFirst()
                     .orElse(results.get(0));
@@ -173,17 +173,17 @@ public class JikanAnimeService {
 
     // Classes auxiliares para deserialização
     private static class JikanResponse {
-        private JikanMangaDto[] data;
+        private JikananimeDto[] data;
 
-        public JikanMangaDto[] getData() {
+        public JikananimeDto[] getData() {
             return data;
         }
     }
 
     private static class JikanSingleResponse {
-        private JikanMangaDto data;
+        private JikananimeDto data;
 
-        public JikanMangaDto getData() {
+        public JikananimeDto getData() {
             return data;
         }
     }
