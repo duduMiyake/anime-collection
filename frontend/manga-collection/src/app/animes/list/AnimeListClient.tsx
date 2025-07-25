@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getTopAnime, getPopularAnime, getSeasonalAnime } from "@/lib/api";
 import type { Anime } from "@/app/types";
 import AnimeCardList from "@/app/components/AnimeCardList";
@@ -18,11 +18,12 @@ function removeDuplicates(animes: Anime[]): Anime[] {
   });
 }
 
-export default function AnimeListClient({
-  initialType,
-}: {
-  initialType: "top" | "popular" | "seasonal";
-}) {
+export default function AnimeListClient() {
+  const searchParams = useSearchParams();
+  const typeParam = searchParams.get("type");
+
+  const initialType: "top" | "popular" | "seasonal" =
+    typeParam === "popular" || typeParam === "seasonal" ? typeParam : "top";
   const router = useRouter();
 
   const [selectedType, setSelectedType] = useState<
