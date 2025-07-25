@@ -34,8 +34,10 @@ export default function AnimeCardList({
       </div>
       <div className="px-4 py-2 text-white">
         <p className="font-semibold text-sm">#{number}</p>
-        <h2 className="text-lg font-semibold mb-2">{anime.title}</h2>
-        <ul className="flex flex-row">
+        <h2 className="text-lg font-semibold mb-2 truncate max-w-[200px] sm:max-w-none">
+          {anime.title}
+        </h2>
+        <ul className="md:flex flex-row hidden">
           {anime.genres.map((genre: string) => (
             <li
               key={genre}
@@ -45,8 +47,19 @@ export default function AnimeCardList({
             </li>
           ))}
         </ul>
+        {/* mobile */}
+        <ul className="flex flex-row md:hidden">
+          {anime.genres.slice(0, 2).map((genre: string) => (
+            <li
+              key={genre}
+              className="text-sm px-4 py-1 border-2 font-semibold border-[#FFD6BA] rounded-full cursor-pointer scale-90"
+            >
+              {genre}
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className="px-4 py-2 text-white">
+      <div className="px-4 py-2 text-white hidden md:block">
         <div className="absolute bottom-2 right-2 text-white px-3 py-1 rounded-md">
           <div className="flex items-end gap-8">
             <div className="flex flex-col items-end">

@@ -25,7 +25,7 @@ export default function FeaturedAnimeSection({
   if (!anime) return null;
 
   return (
-    <section className="flex flex-col md:flex-row relative max-w-5xl mx-auto md:my-12 h-[400px] md:overflow-visible bg-[#555B6E]">
+    <section className="flex flex-col md:flex-row relative max-w-5xl mx-auto md:my-12 h-auto md:h-[400px] md:overflow-visible bg-[#555B6E] py-8 md:py-0">
       <div className="w-full hidden md:flex">
         {/* Imagem à esquerda */}
         <div className="flex justify-center w-auto h-full">
@@ -105,17 +105,17 @@ export default function FeaturedAnimeSection({
         )}
       </div>
       {/* mobile */}
-      <div className="w-full h-full md:hidden flex flex-col justify-around items-center text-center mr-4">
-        <div className="flex justify-center w-auto h-[70%]">
+      <div className="w-full h-full md:hidden flex flex-col justify-center items-center text-center mr-4">
+        <div className="flex justify-center w-auto h-[70%] mb-4">
           {linkToDetails ? (
             <Link
               href={`/animes/${anime.id}/${slugify(anime.title)}`}
-              className="w-full md:h-full overflow-visible relative transition-transform duration-300 hover:scale-110 hover:brightness-80"
+              className="w-full md:h-full overflow-visible relative"
             >
               <Image
                 src={anime.largeImageUrl}
                 alt={anime.title}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain rounded"
                 width={500}
                 height={400}
                 priority
@@ -136,12 +136,10 @@ export default function FeaturedAnimeSection({
             </div>
           )}
         </div>
-        <h1 className="text-2xl md:text-4xl font-bold mb-4 truncate max-w-[80%] overflow-hidden whitespace-nowrap text-ellipsis">
+        <h1 className="text-2xl md:text-4xl font-bold max-w-[80%] overflow-hidden">
           {anime.title}
         </h1>
-
       </div>
-     
     </section>
   );
 }

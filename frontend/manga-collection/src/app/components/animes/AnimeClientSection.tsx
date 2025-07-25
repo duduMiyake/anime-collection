@@ -10,9 +10,9 @@ export default function AnimeClientSection({ anime }: { anime: Anime }) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
   return (
-    <section className="flex flex-row justify-between max-w-5xl mx-auto">
-      <div className="max-w-3/4 pr-10">
-        <ul className="flex flex-row gap-4">
+    <section className="flex md:flex-row flex-col justify-between max-w-5xl mx-auto">
+      <div className="md:max-w-3/4 md:pr-10 px-8 md:px-0">
+        <ul className="flex flex-row gap-4 justify-center md:justify-start mt-8 md:mt-0">
           {anime.genres.map((genre: string) => (
             <li
               key={genre}
@@ -85,13 +85,13 @@ export default function AnimeClientSection({ anime }: { anime: Anime }) {
       </div>
 
       {/*Right side*/}
-      <div className="flex flex-col w-fit font-semibold">
-        <div className="flex border-b-1 py-4 items-center">
+      <div className="flex flex-col md:w-fit font-semibold justify-center px-8 md:px-0">
+        <div className="flex md:border-b-1 py-4 items-center">
           <h1 className="mr-4 text-lg text-[#FFD6BA]">Studios: </h1>
           <p>{anime.studios.join(", ")}</p>
         </div>
 
-        <div className="flex border-b-1 py-4 items-center">
+        <div className="flex md:border-b-1 py-4 items-center">
           <h1 className="mr-4 text-lg text-[#FFD6BA]">Demographics: </h1>
           {anime.demographics.length === 0 ? (
             <p>Unkown</p>
@@ -100,7 +100,7 @@ export default function AnimeClientSection({ anime }: { anime: Anime }) {
           )}
         </div>
 
-        <div className="flex border-b-1 py-4 items-center">
+        <div className="flex md:border-b-1 py-4 items-center">
           <h1 className="mr-4 text-lg text-[#FFD6BA]">Theme: </h1>
           {anime.themes.length === 0 ? (
             <p>Unkown</p>
@@ -109,7 +109,7 @@ export default function AnimeClientSection({ anime }: { anime: Anime }) {
           )}
         </div>
 
-        <div className="flex border-b-1 py-4 items-center">
+        <div className="flex md:border-b-1 py-4 items-center">
           <h1 className="mr-4 text-lg text-[#FFD6BA]">Status: </h1>
           {anime.status === "" ? (
             <p>Unkown</p>
@@ -120,12 +120,12 @@ export default function AnimeClientSection({ anime }: { anime: Anime }) {
           )}
         </div>
 
-        <div className="flex border-b-1 py-4 items-center">
+        <div className="flex md:border-b-1 py-4 items-center">
           <h1 className="mr-4 text-lg text-[#FFD6BA]">Episodes: </h1>
           {anime.episodes ? <p>{anime.episodes}</p> : <p>Unkown</p>}
         </div>
 
-        <div className="flex border-b-1 py-4 items-center">
+        <div className="flex md:border-b-1 py-4 items-center">
           <h1 className="mr-4 text-lg text-[#FFD6BA]">Rating: </h1>
           {anime.rating ? <p>{anime.rating}</p> : <p>Unkown</p>}
         </div>
