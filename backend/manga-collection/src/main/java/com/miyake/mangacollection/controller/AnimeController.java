@@ -27,13 +27,13 @@ public class AnimeController {
     }
 
     @GetMapping("/popular")
-    public List<MangaResponse> getPopularAnimes() {
-        return jikanService.getPopularAnimes();
+    public List<MangaResponse> getPopularAnimes(@RequestParam(defaultValue = "1") int page) {
+        return jikanService.getPopularAnimes(page);
     }
 
     @GetMapping("/seasonal")
-    public List<MangaResponse> getSeasonalAnimes() {
-        return jikanService.getSeasonalAnimes();
+    public List<MangaResponse> getSeasonalAnimes(@RequestParam(defaultValue = "1") int page) {
+        return jikanService.getSeasonalAnimes(page);
     }
 
     @GetMapping("/id/{id}")

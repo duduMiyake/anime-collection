@@ -7,17 +7,16 @@ export default function Navbar() {
     <nav className="text-white py-4">
       <div className="max-w-5xl mx-auto px-6 flex items-center justify-between">
         <div className="text-xl font-bold">
-          <Link href="/">MinhaLogo</Link>
+          <Link href="/">AnimeTrack</Link>
         </div>
 
         <ul className="flex gap-6 text-sm md:text-base">
-          <li className="hover:text-gray-300 cursor-pointer">
+          <li className="hover:text-gray-300 cursor-pointer font-semibold">
             <Link href="/">Home</Link>
           </li>
-          <li className="hover:text-gray-300 cursor-pointer">
+          <li className="hover:text-gray-300 cursor-pointer font-semibold">
             <Link href={"/animes/list"}>Animes</Link>
           </li>
-          <li className="hover:text-gray-300 cursor-pointer">About</li>
         </ul>
       </div>
     </nav>

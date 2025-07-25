@@ -28,6 +28,7 @@ export default function AnimeCardList({
           src={anime.largeImageUrl}
           alt={anime.title}
           fill
+          sizes="96px"
           className="object-cover"
         />
       </div>
@@ -58,7 +59,7 @@ export default function AnimeCardList({
                 <p className="text-sm md:text-xl text-gray-200">⭐</p>
               </div>
               <p className="text-sm opacity-70 text-center">
-                {anime.scoredBy / 1000} reviews
+                {Number(anime.scoredBy).toLocaleString("pt-BR")} reviews
               </p>
             </div>
           </div>

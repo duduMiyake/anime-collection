@@ -23,7 +23,6 @@ export default function FeaturedAnimeSection({
 }: FeaturedAnimeSectionProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
   if (!anime) return null;
-  console.log("anime: ", anime);
 
   return (
     <section className="flex flex-row relative max-w-5xl mx-auto my-12 h-[400px] overflow-visible bg-[#555B6E]">
@@ -84,7 +83,7 @@ export default function FeaturedAnimeSection({
                   <span className="text-md opacity-70">/10</span>
                 </div>
                 <p className="text-sm opacity-70">
-                  {Math.round(anime.scoredBy / 1000)} reviews
+                  {Number(anime.scoredBy).toLocaleString("pt-BR")} reviews
                 </p>
               </div>
             </div>

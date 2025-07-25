@@ -4,14 +4,14 @@ export async function getTopAnime(page: number = 1, limit: number = 25) {
     return res.json();
 }
 
-export async function getPopularAnime() {
-    const res = await fetch("http://localhost:8080/api/animes/popular");
+export async function getPopularAnime(page: number = 1) {
+    const res = await fetch(`http://localhost:8080/api/animes/popular?page=${page}`);
     if (!res.ok) throw new Error("Erro ao buscar popular animes");
     return res.json();
 }
 
-export async function getSeasonalAnime() {
-    const res = await fetch("http://localhost:8080/api/animes/seasonal");
+export async function getSeasonalAnime(page: number = 1) {
+    const res = await fetch(`http://localhost:8080/api/animes/seasonal?page=${page}`);
     if (!res.ok) throw new Error("Erro ao buscar seasonal animes");
     return res.json();
 }

@@ -61,18 +61,21 @@ export default function HomePage() {
 
       <div className="max-w-5xl mx-auto">
         <AnimeListSection
+          listType="seasonal"
           title="Popular this season"
           animes={seasonalAnimes}
           loading={loading}
         />
 
         <AnimeListSection
+          listType="top"
           title="Best rated"
           animes={topAnimes}
           loading={loading}
         />
 
         <AnimeListSection
+          listType="popular"
           title="All time popular"
           animes={popularAnimes}
           loading={loading}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import SkeletonAnimeListSection from "./fallback/SkeletonAnimeListSection";
 
 interface AnimeListSectionProps {
+  listType?: "top" | "popular" | "seasonal";
   title: string;
   animes: Anime[];
   loading: boolean;
@@ -12,6 +13,7 @@ interface AnimeListSectionProps {
 }
 
 export default function AnimeListSection({
+  listType,
   title,
   animes,
   loading,
@@ -22,7 +24,7 @@ export default function AnimeListSection({
         <h2 className="text-white text-xl font-bold mb-4 border-l-4 border-[#FFD6BA] pl-2">
           {title}
         </h2>
-        <Link href={"/"}>Ver todos</Link>
+        <Link href={`/animes/list?type=${listType}`}>Ver todos</Link>
       </div>
 
       {loading ? (

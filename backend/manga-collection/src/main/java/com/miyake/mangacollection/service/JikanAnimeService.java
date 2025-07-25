@@ -30,14 +30,15 @@ public class JikanAnimeService {
         this.restTemplate = restTemplate;
     }
 
-    public List<MangaResponse> getPopularAnimes() {
-        String key = "popular";
+    public List<MangaResponse> getPopularAnimes(int page) {
+        String key = "popular_" + page;
         var cached = cachePopular.get(key);
         if (cached != null)
             return cached;
 
-        String url = JIKAN_API + "/top/anime?filter=bypopularity";
+        String url = JIKAN_API + "/top/anime?filter=bypopularity&page=" + page + "&sfw=true";
         var response = restTemplate.getForObject(url, JikanResponse.class);
+
         var list = Arrays.stream(response.getData())
                 .map(MangaResponse::new)
                 .collect(Collectors.toList());
@@ -52,7 +53,7 @@ public class JikanAnimeService {
         if (cached != null)
             return cached;
 
-        String url = JIKAN_API + "/top/anime?page=" + page;
+        String url = JIKAN_API + "/top/anime?page=" + page + "&sfw=true";
         var response = restTemplate.getForObject(url, JikanResponse.class);
         var list = Arrays.stream(response.getData())
                 .map(MangaResponse::new)
@@ -84,20 +85,36 @@ public class JikanAnimeService {
         return allAnimes;
     }
 
-    public List<MangaResponse> getSeasonalAnimes() {
-        String key = "seasonal";
+    public List<MangaResponse> getSeasonalAnimes(int page) {
+        String key = "seasonal_" + page;
         var cached = cacheSeasonal.get(key);
         if (cached != null)
             return cached;
 
-        String url = JIKAN_API + "/seasons/now";
+        // Pega a estação e ano atual
+        String season = getCurrentSeason().toLowerCase();
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+
+        String url = JIKAN_API + "/seasons/" + year + "/" + season + "?page=" + page + "&sfw=true";
         var response = restTemplate.getForObject(url, JikanResponse.class);
+
         var list = Arrays.stream(response.getData())
                 .map(MangaResponse::new)
                 .collect(Collectors.toList());
 
         cacheSeasonal.put(key, list);
         return list;
+    }
+
+    private String getCurrentSeason() {
+        int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
+        if (month >= 1 && month <= 3)
+            return "Winter";
+        if (month >= 4 && month <= 6)
+            return "Spring";
+        if (month >= 7 && month <= 9)
+            return "Summer";
+        return "Fall";
     }
 
     public MangaResponse getAnimeById(Long id) {
