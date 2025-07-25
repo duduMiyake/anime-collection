@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="text-white py-4">
+    <nav className="text-white py-8 md:py-4">
       <div className="max-w-5xl mx-auto px-6 flex items-center justify-between">
         <div className="text-xl font-bold">
           <Link href="/">AnimeCollection</Link>

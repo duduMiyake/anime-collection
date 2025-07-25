@@ -25,8 +25,8 @@ export default function FeaturedAnimeSection({
   if (!anime) return null;
 
   return (
-    <section className="flex flex-row relative max-w-5xl mx-auto my-12 h-[400px] overflow-visible bg-[#555B6E]">
-      <div className="w-full flex">
+    <section className="flex flex-col md:flex-row relative max-w-5xl mx-auto md:my-12 h-[400px] md:overflow-visible bg-[#555B6E]">
+      <div className="w-full hidden md:flex">
         {/* Imagem à esquerda */}
         <div className="flex justify-center w-auto h-full">
           {linkToDetails ? (
@@ -104,6 +104,44 @@ export default function FeaturedAnimeSection({
           </div>
         )}
       </div>
+      {/* mobile */}
+      <div className="w-full h-full md:hidden flex flex-col justify-around items-center text-center mr-4">
+        <div className="flex justify-center w-auto h-[70%]">
+          {linkToDetails ? (
+            <Link
+              href={`/animes/${anime.id}/${slugify(anime.title)}`}
+              className="w-full md:h-full overflow-visible relative transition-transform duration-300 hover:scale-110 hover:brightness-80"
+            >
+              <Image
+                src={anime.largeImageUrl}
+                alt={anime.title}
+                className="w-full h-full object-contain"
+                width={500}
+                height={400}
+                priority
+                onLoad={() => setImageLoaded(true)}
+              />
+            </Link>
+          ) : (
+            <div className="w-full h-full overflow-visible relative">
+              <Image
+                src={anime.largeImageUrl}
+                alt={anime.title}
+                className="w-full h-full object-contain"
+                width={500}
+                height={400}
+                priority
+                onLoad={() => setImageLoaded(true)}
+              />
+            </div>
+          )}
+        </div>
+        <h1 className="text-2xl md:text-4xl font-bold mb-4 truncate max-w-[80%] overflow-hidden whitespace-nowrap text-ellipsis">
+          {anime.title}
+        </h1>
+
+      </div>
+     
     </section>
   );
 }
