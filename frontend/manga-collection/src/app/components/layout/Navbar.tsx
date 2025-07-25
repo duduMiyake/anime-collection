@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className="text-white py-4">
       <div className="max-w-5xl mx-auto px-6 flex items-center justify-between">
         <div className="text-xl font-bold">
-          <Link href="/">AnimeTrack</Link>
+          <Link href="/">AnimeCollection</Link>
         </div>
 
         <ul className="flex gap-6 text-sm md:text-base">
