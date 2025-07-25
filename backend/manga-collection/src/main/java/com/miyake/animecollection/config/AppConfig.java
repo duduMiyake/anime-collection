@@ -20,9 +20,8 @@ public class AppConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:3000")
-                        .allowedOrigins("https://frontend-anime.onrender.com")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedOrigins("http://localhost:3000", "https://frontend-anime.onrender.com")
+                        .allowedMethods("*") 
                         .allowedMethods("*");
             }
         };
