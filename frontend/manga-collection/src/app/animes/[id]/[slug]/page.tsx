@@ -1,17 +1,13 @@
-// src/app/animes/[id]/[slug]/page.tsx
-import dynamic from "next/dynamic";
+"use client";
 
-const AnimeDetailClient = dynamic(() => import("./AnimeDetailClient"), {
-  ssr: false,
-});
+import { use } from "react";
+import AnimeDetailClient from "./AnimeDetailClient";
 
-type Props = {
-  params: {
-    id: string;
-    slug: string;
-  };
-};
+interface Props {
+  params: Promise<{ id: string; slug: string }>;
+}
 
 export default function AnimeDetailPage({ params }: Props) {
-  return <AnimeDetailClient id={params.id} slug={params.slug} />;
+  const { id, slug } = use(params);
+  return <AnimeDetailClient id={id} slug={slug} />;
 }
