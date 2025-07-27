@@ -51,7 +51,7 @@ export default function AnimeDetailClient({ id, slug }: Props) {
   }, [id, slug, router]);
 
   return (
-    <main className="min-h-screen text-white md:p-8 border border-black">
+    <main className="min-h-screen text-white md:p-8">
       {loading || !anime ? (
         <SkeletonFeaturedAnimeSection />
       ) : (
