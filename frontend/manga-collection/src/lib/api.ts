@@ -24,8 +24,8 @@ export async function getAnimeById(id: string) {
     return res.json();
 }
 
-export async function getAnimeByName(name: string) {
-    const res = await fetch(`${BACK_API_URL}/api/animes/title/first/${name}`);
+export async function searchAnimeByName(name: string) {
+    const res = await fetch(`${BACK_API_URL}/api/animes/title/${name}`);
     if (!res.ok) throw new Error("Erro ao buscar anime");
     return res.json();
 }

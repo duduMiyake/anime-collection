@@ -19,7 +19,7 @@ export default function AnimeListSection({
   loading,
 }: AnimeListSectionProps) {
   return (
-    <section className="mt-10 mx-5">
+    <section className="mt-10 mx-5 md:mx-0">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-white text-xl font-bold border-l-4 border-[#FFD6BA] pl-2">
           {title}

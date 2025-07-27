@@ -45,7 +45,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="min-h-screen text-white w-screen">
+    <main className="min-h-screen text-white">
       {loading ? (
         <SkeletonFeaturedAnimeSection />
       ) : (

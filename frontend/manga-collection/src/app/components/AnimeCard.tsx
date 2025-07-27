@@ -22,7 +22,7 @@ export default function AnimeCard({
   linkToDetails = true,
 }: AnimeCardProps) {
   const CardContent = (
-    <div className="min-w-[160px] h-[230px] relative rounded-lg overflow-visible shadow-md md:hover:scale-110 md:hover:border-2 border-[#FAF9F9] transition-transform">
+    <div className="min-w-[157px] h-[230px] relative rounded-lg overflow-visible shadow-md md:hover:scale-110 md:hover:border-2 border-[#FAF9F9] transition-transform">
       <Image
         src={imageUrl}
         alt={title}
