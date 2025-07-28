@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { getSeasonalAnime, getTopAnime, getPopularAnime } from "@/lib/api";
 import AnimeListSection from "@/app/components/AnimeListSection";
 import { Anime } from "@/app/types";
-import FeaturedAnimeSection from "./components/animes/FeaturedAnimeSection";
-import SkeletonFeaturedAnimeSection from "./components/fallback/SkeletonFeaturedAnimeSection";
+import SkeletonFeaturedAnimeSection from "../components/fallback/SkeletonFeaturedAnimeSection";
+import FeaturedAnimeSection from "../components/animes/FeaturedAnimeSection";
 
 function removeDuplicates(animes: Anime[]): Anime[] {
   const seen = new Set<string>();

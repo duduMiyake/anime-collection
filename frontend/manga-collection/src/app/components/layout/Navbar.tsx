@@ -11,18 +11,23 @@ export default function Navbar() {
           <Link href="/">AnimeCollection</Link>
         </div>
 
-        {/* Coloque a SearchBar ocupando toda a largura no mobile */}
-        <div className="w-full md:w-auto">
+        <div className="w-full md:w-auto md:hidden">
           <SearchBar />
         </div>
 
         <ul className="flex gap-6 text-sm md:text-base items-center">
+          <li className="hover:text-gray-300 cursor-pointer font-semibold">
+            <Link href="/login">Login</Link>
+          </li>
           <li className="hover:text-gray-300 cursor-pointer font-semibold">
             <Link href="/">Home</Link>
           </li>
           <li className="hover:text-gray-300 cursor-pointer font-semibold">
             <Link href="/animes/list">Animes</Link>
           </li>
+          <div className="w-auto">
+            <SearchBar />
+          </div>
         </ul>
       </div>
     </nav>

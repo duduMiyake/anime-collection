@@ -25,7 +25,7 @@ export default function FeaturedAnimeSection({
   if (!anime) return null;
 
   return (
-    <section className="flex flex-col md:flex-row relative max-w-5xl mx-auto md:my-12 h-auto md:h-[400px] md:overflow-visible bg-[#555B6E] py-8 md:py-0">
+    <section className="flex flex-col md:flex-row relative max-w-5xl mx-auto md:my-12 h-auto md:h-[400px] md:overflow-visible bg-[#2A2A2A] py-8 md:py-0">
       <div className="w-full hidden md:flex">
         {/* Imagem à esquerda */}
         <div className="flex justify-center w-auto h-full">
