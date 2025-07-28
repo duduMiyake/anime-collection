@@ -12,10 +12,17 @@ _[Link to the deployed application](https://frontend-anime.onrender.com/)_
 
 ### 📸 Screenshots
 
-_(Add a few screenshots of your application here. For example: the home page, the search results, and a detail page.)_
+#### Home page
 
-![Screenshot 1](demo/screenshot1.png)
-![Screenshot 2](demo/screenshot2.png)
+![Screenshot 1](demo/screenshot-1.png)
+
+#### Details page
+
+![Screenshot 2](demo/screenshot-2.png)
+
+#### List page
+
+![Screenshot 3](demo/screenshot-3.png)
 
 ---
 
@@ -45,13 +52,13 @@ This project is a full-stack application with a clear separation between the fro
 
 ### Backend
 
-| Tech                                                              | Description                                                                                       |
-| :---------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
-| **[Spring Boot](https://spring.io/projects/spring-boot)**         | A framework for creating stand-alone, production-grade Spring-based applications.                 |
-| **[Java](https://www.java.com/)**                                 | A robust, object-oriented programming language.                                                   |
-| **[Spring Data JPA](https://spring.io/projects/spring-data-jpa)** | Simplifies data access layers by reducing boilerplate code.                                       |
-| **[PostgreSQL (Not in the current app version)](https://www.postgresql.org/)**                     | A powerful, open-source object-relational database system.                                        |
-| **[Maven](https://maven.apache.org/)**                            | A powerful project management and build automation tool.                                          |
+| Tech                                                                           | Description                                                                       |
+| :----------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
+| **[Spring Boot](https://spring.io/projects/spring-boot)**                      | A framework for creating stand-alone, production-grade Spring-based applications. |
+| **[Java](https://www.java.com/)**                                              | A robust, object-oriented programming language.                                   |
+| **[Spring Data JPA](https://spring.io/projects/spring-data-jpa)**              | Simplifies data access layers by reducing boilerplate code.                       |
+| **[PostgreSQL (Not in the current app version)](https://www.postgresql.org/)** | A powerful, open-source object-relational database system.                        |
+| **[Maven](https://maven.apache.org/)**                                         | A powerful project management and build automation tool.                          |
 
 ---
 
@@ -66,7 +73,7 @@ Make sure you have the following installed on your machine:
 - Java 17+
 - Maven 3+
 - Node.js v18+
-- npm or yarn
+- npm
 - A running instance of PostgreSQL (not necessary for the current version)
 
 ### Backend Setup
@@ -78,7 +85,7 @@ Make sure you have the following installed on your machine:
    cd manga-collection/backend
    ```
 
-2. **Configure the databasea (not necessary on the current version):**
+2. **Configure the database (not necessary on the current version):**
 
    - Open `src/main/resources/application.properties`.
    - Update the `spring.datasource.url`, `spring.datasource.username`, and `spring.datasource.password` properties with your PostgreSQL credentials.
@@ -102,8 +109,6 @@ Make sure you have the following installed on your machine:
 
    ```sh
    npm install
-   # or
-   yarn install
    ```
 
 3. **Set up environment variables:**
@@ -111,14 +116,12 @@ Make sure you have the following installed on your machine:
    - Create a file named `.env.local` in the `frontend/manga-collection` directory.
    - Add the following line to connect to your local backend API:
      ```
-     NEXT_PUBLIC_API_URL=http://localhost:8080/api
+     NEXT_PUBLIC_API_URL=http://localhost:8080
      ```
 
 4. **Run the development server:**
    ```sh
    npm run dev
-   # or
-   yarn dev
    ```
    Open http://localhost:3000 with your browser to see the result.
 
