@@ -3,25 +3,29 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { loginUser } from "@/lib/api";
+import { useUser } from "@/context/UserContext";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const { login } = useUser();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      // Aqui você pode chamar sua API ou lógica de autenticação
-      if (email === "teste@anime.com" && password === "123456") {
-        router.push("/"); // Redireciona para a HomePage
-      } else {
-        alert("Credenciais inválidas.");
-      }
+      const { user, token } = await loginUser({ email, password });
+      console.log(user);
+      login(user, token);
+      toast.success("Login realizado com sucesso!");
+
+      router.push("/");
     } catch (error) {
       console.error("Erro ao fazer login:", error);
-      alert("Erro ao fazer login.");
+      toast.error("Erro ao fazer login. Verifique suas credenciais.");
     }
   };
 

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { registerUser } from "@/lib/api";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -15,15 +17,23 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (password !== confirmPassword) {
+      toast.error("As senhas não coincidem.");
+      return;
+    }
+
     try {
-      if (email === "teste@anime.com" && password === "123456") {
-        router.push("/");
-      } else {
-        alert("Credenciais inválidas.");
-      }
+      await registerUser({
+        username,
+        email,
+        password,
+      });
+
+      toast.success("Usuário registrado com sucesso!");
+      router.push("/login");
     } catch (error) {
-      console.error("Erro ao fazer login:", error);
-      alert("Erro ao fazer login.");
+      console.error("Erro ao registrar:", error);
+      toast.error("Erro ao registrar. Verifique os dados.");
     }
   };
 

@@ -2,7 +2,7 @@ package com.miyake.animecollection.service;
 
 import com.miyake.animecollection.dto.UserDTO;
 import com.miyake.animecollection.model.User;
-import com.miyake.animecollection.repository.UserRepository;
+import com.miyake.animecollection.repository.IUserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -13,9 +13,9 @@ import java.util.UUID;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
+    private final IUserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
