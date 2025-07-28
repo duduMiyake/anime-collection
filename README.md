@@ -8,22 +8,22 @@ This project was built with a modern tech stack, featuring a **Spring Boot** bac
 
 ### ✨ Live Demo
 
-_[Link to your deployed application]_
+_[Link to the deployed application](https://frontend-anime.onrender.com/)_
 
 ### 📸 Screenshots
 
 _(Add a few screenshots of your application here. For example: the home page, the search results, and a detail page.)_
 
-![Screenshot 1](path/to/screenshot1.png)
-![Screenshot 2](path/to/screenshot2.png)
+![Screenshot 1](demo/screenshot1.png)
+![Screenshot 2](demo/screenshot2.png)
 
 ---
 
 ## 🚀 Key Features
 
-- **Dynamic Search**: Instantly search for anime and manga with a live, debounced search bar that provides real-time suggestions.
+- **Dynamic Search**: Instantly search for anime with a live, debounced search bar that provides real-time suggestions.
 - **Detailed Views**: Click on any series to navigate to a dedicated page with more information.
-- **Personalized Collections**: (Assumed Feature) Users can create an account to add series to custom lists like "Watching", "Completed", or "Plan to Watch".
+- **Personalized Collections**: (Future Feature) Users can create an account to add series to custom lists like "Watching", "Completed", or "Plan to Watch".
 - **Responsive Design**: A clean and modern UI built with Tailwind CSS that works seamlessly on both desktop and mobile devices.
 - **RESTful API**: A well-structured backend API to serve data to the frontend client.
 
@@ -50,7 +50,7 @@ This project is a full-stack application with a clear separation between the fro
 | **[Spring Boot](https://spring.io/projects/spring-boot)**         | A framework for creating stand-alone, production-grade Spring-based applications.                 |
 | **[Java](https://www.java.com/)**                                 | A robust, object-oriented programming language.                                                   |
 | **[Spring Data JPA](https://spring.io/projects/spring-data-jpa)** | Simplifies data access layers by reducing boilerplate code.                                       |
-| **[PostgreSQL / H2](https://www.postgresql.org/)**                | A powerful, open-source object-relational database system. (Configurable for H2 for development). |
+| **[PostgreSQL (Not in the current app version)](https://www.postgresql.org/)**                     | A powerful, open-source object-relational database system.                                        |
 | **[Maven](https://maven.apache.org/)**                            | A powerful project management and build automation tool.                                          |
 
 ---
@@ -67,7 +67,7 @@ Make sure you have the following installed on your machine:
 - Maven 3+
 - Node.js v18+
 - npm or yarn
-- A running instance of PostgreSQL (optional, can be configured to use the in-memory H2 database).
+- A running instance of PostgreSQL (not necessary for the current version)
 
 ### Backend Setup
 
@@ -78,19 +78,13 @@ Make sure you have the following installed on your machine:
    cd manga-collection/backend
    ```
 
-2. **Configure the database:**
+2. **Configure the databasea (not necessary on the current version):**
 
    - Open `src/main/resources/application.properties`.
    - Update the `spring.datasource.url`, `spring.datasource.username`, and `spring.datasource.password` properties with your PostgreSQL credentials.
    - (Alternatively, you can comment out the PostgreSQL properties to use the default H2 in-memory database).
 
-3. **(Optional) Configure External API Access:**
-
-   - The backend may require an API key to fetch data from an external source (e.g., Jikan API for MyAnimeList).
-   - If needed, add the key to `src/main/resources/application.properties`. For example: `external.api.key=YOUR_API_KEY_HERE`.
-   - _(Note: If the app can run without an external API key, you can mention that here.)_
-
-4. **Run the backend server:**
+3. **Run the backend server:**
    ```sh
    mvn spring-boot:run
    ```
@@ -139,17 +133,11 @@ Make sure you have the following installed on your machine:
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details.
-
----
-
 ## 👨‍💻 Author
 
-**[Your Name]**
+**[Eduardo Miyake]**
 
-- GitHub: @your-username
-- LinkedIn: Your LinkedIn Profile
+- GitHub: [@dudumiyake](https://github.com/duduMiyake)
+- LinkedIn: [Eduardo Miyake](https://www.linkedin.com/in/eduardo-miyake/)
 
 Feel free to reach out if you have any questions or suggestions!
