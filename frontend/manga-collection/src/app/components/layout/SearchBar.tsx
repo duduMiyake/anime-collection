@@ -76,7 +76,7 @@ export default function SearchBar() {
         className="w-full px-4 py-2 rounded-md text-white bg-transparent outline-none"
       />
       {showDropdown && (
-        <div className="absolute top-full left-0 w-full bg-[#89B0AE] text-white rounded-md shadow-md z-50">
+        <div className="absolute top-full left-0 w-full bg-[#2A2A2A] text-white rounded-md shadow-md z-50">
           {loading ? (
             <div className="flex justify-center items-center p-4">
               <Loader />

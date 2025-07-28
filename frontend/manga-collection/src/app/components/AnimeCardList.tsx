@@ -22,7 +22,7 @@ export default function AnimeCardList({
   linkToDetails = true,
 }: AnimeCardListProps) {
   const content = (
-    <div className="flex items-center bg-[#89B0AE] rounded-md overflow-hidden hover:scale-[1.01] transition-transform relative">
+    <div className="flex items-center bg-[#2A2A2A] rounded-md overflow-hidden hover:scale-[1.01] transition-transform relative">
       <div className="relative w-24 h-36 flex-shrink-0">
         <Image
           src={anime.largeImageUrl}
